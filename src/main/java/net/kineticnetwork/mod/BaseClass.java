@@ -21,7 +21,7 @@ public class BaseClass {
 	 * tidy the fuck up
 	**/ 
 	
-	public static final String MODID = "thewall";
+	public static final String MODID = "knthewall";
 	public static final String VERSION = "0.0.1";
 
 	@EventHandler
