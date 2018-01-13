@@ -17,8 +17,7 @@ import net.minecraft.item.ItemStack;
 public class BaseClass {
 	
 	/** TODO LIST
-	 * add shit
-	 * tidy the fuck up
+	 * I think that's it...
 	**/ 
 	
 	public static final String MODID = "knthewall";
@@ -26,7 +25,7 @@ public class BaseClass {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-
+		System.out.println("Loaded THE WALL!");
 	}
 
 	@EventHandler
