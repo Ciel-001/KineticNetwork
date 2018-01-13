@@ -1,4 +1,4 @@
-package net.kineticnetwork.mod;
+package net.kineticnetwork.knspawntp;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -17,15 +17,15 @@ import net.minecraft.item.ItemStack;
 public class BaseClass {
 	
 	/** TODO LIST
-	 * I think that's it...
+	 * TP player to spawn upon join
 	**/ 
 	
-	public static final String MODID = "knthewall";
+	public static final String MODID = "knspawntp";
 	public static final String VERSION = "0.0.1";
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		System.out.println("Loaded THE WALL!");
+		System.out.println("Loaded Spawn TP!");
 	}
 
 	@EventHandler

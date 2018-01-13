@@ -1,4 +1,4 @@
-package net.kineticnetwork.mod;
+package net.kineticnetwork.knthewall;
 
 import java.util.List;
 
