@@ -1,4 +1,4 @@
-package com.gg5.cosblocks;
+package net.kineticnetwork.mod;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -14,7 +14,6 @@ public class BasicBlock extends Block {
 		super(m);
 		setBlockName(name);
 		setBlockTextureName(BaseClass.MODID + ":" + name);
-		setCreativeTab(BaseClass.tabCosBlocks);
 		setHardness(1.0f);
 		setResistance(10.0f);
 		setLightLevel(lightlevel);

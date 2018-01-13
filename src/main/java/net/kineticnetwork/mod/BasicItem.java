@@ -1,4 +1,4 @@
-package com.gg5.cosblocks;
+package net.kineticnetwork.mod;
 
 import java.util.List;
 
@@ -20,7 +20,6 @@ public class BasicItem extends Item {
 	}
 
 	public BasicItem(String name) {
-		setCreativeTab(BaseClass.tabCosBlocks);
 		setUnlocalizedName(name);
 		setTextureName(BaseClass.MODID + ":" + name);
 
