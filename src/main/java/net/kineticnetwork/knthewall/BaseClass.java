@@ -4,7 +4,9 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.kineticnetwork.knspawntp.BasicCommand;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -23,6 +25,11 @@ public class BaseClass {
 	public static final String MODID = "knthewall";
 	public static final String VERSION = "0.0.1";
 
+	@EventHandler
+	public void serverLoad(FMLServerStartingEvent event) {
+		// register server commands
+	}
+	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		System.out.println("Loaded THE WALL!");
