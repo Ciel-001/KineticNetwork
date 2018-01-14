@@ -15,7 +15,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-@Mod(modid = BaseClass.MODID, version = BaseClass.VERSION)
+@Mod(modid = BaseClass.MODID, name = "The Wall", version = BaseClass.VERSION)
 public class BaseClass {
 	
 	/** TODO LIST
