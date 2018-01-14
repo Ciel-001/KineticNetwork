@@ -15,7 +15,7 @@ public class BaseClass {
 	 * TODO LIST TP player to spawn upon join
 	 **/
 
-	public static final String MODID = "knspawntp";
+	public static final String MODID = "knteleport";
 	public static final String VERSION = "0.0.1";
 
 	@EventHandler
