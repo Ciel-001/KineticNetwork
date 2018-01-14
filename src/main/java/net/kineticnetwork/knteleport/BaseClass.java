@@ -8,7 +8,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import net.minecraft.server.network.NetHandlerLoginServer;
 
-@Mod(modid = BaseClass.MODID, version = BaseClass.VERSION)
+@Mod(modid = BaseClass.MODID, name = BaseClass.NAME, version = BaseClass.VERSION)
 public class BaseClass {
 
 	/**
@@ -16,12 +16,13 @@ public class BaseClass {
 	 **/
 
 	public static final String MODID = "knteleport";
+	public static final String NAME = "KN Teleport";
 	public static final String VERSION = "0.0.1";
 
 	@EventHandler
 	public void serverLoad(FMLServerStartingEvent event) {
 		// register server commands
-		event.registerServerCommand(new BasicCommand());
+		event.registerServerCommand(new TPACommand());
 	}
 
 	@EventHandler
