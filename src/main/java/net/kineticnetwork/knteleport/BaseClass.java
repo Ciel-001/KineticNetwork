@@ -1,12 +1,12 @@
 package net.kineticnetwork.knteleport;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import net.minecraft.server.network.NetHandlerLoginServer;
+import net.minecraftforge.common.MinecraftForge;
 
 @Mod(modid = BaseClass.MODID, name = BaseClass.NAME, version = BaseClass.VERSION)
 public class BaseClass {
@@ -18,6 +18,8 @@ public class BaseClass {
 	public static final String MODID = "knteleport";
 	public static final String NAME = "KN Teleport";
 	public static final String VERSION = "0.0.1";
+	
+	public MyEventHandler myEventHandler;
 
 	@EventHandler
 	public void serverLoad(FMLServerStartingEvent event) {
@@ -27,7 +29,9 @@ public class BaseClass {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		myEventHandler = new MyEventHandler();
 		
+		FMLCommonHandler.instance().bus().register(myEventHandler);
 		
 		System.out.println("Loaded Spawn TP!");
 	}
