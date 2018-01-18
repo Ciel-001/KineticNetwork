@@ -6,7 +6,11 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.relauncher.Side;
+import net.kineticnetwork.knteleport.network.MyMessage;
+import net.kineticnetwork.knteleport.network.MyMessageHandler;
 
 @Mod(modid = BaseClass.MODID, name = BaseClass.NAME, version = BaseClass.VERSION)
 public class BaseClass {
@@ -18,6 +22,8 @@ public class BaseClass {
 	public static final String MODID = "knteleport";
 	public static final String NAME = "KN Teleport";
 	public static final String VERSION = "0.0.1";
+	
+	public static SimpleNetworkWrapper NETWORK;
 	
 	public MyEventHandler myEventHandler;
 
@@ -33,7 +39,11 @@ public class BaseClass {
 		
 		FMLCommonHandler.instance().bus().register(myEventHandler);
 		
-		System.out.println("Loaded Spawn TP!");
+		NETWORK = NetworkRegistry.INSTANCE.newSimpleChannel("knteleport");
+		NETWORK.registerMessage(MyMessageHandler.class, MyMessage.class, 1, Side.CLIENT);
+		NETWORK.registerMessage(MyMessageHandler.class, MyMessage.class, 2, Side.SERVER);
+		
+		System.out.println("Loaded KNTeleport!");
 	}
 
 	@EventHandler

@@ -45,7 +45,7 @@ public class TPACommand implements ICommand {
 
 		// If the command is being sent from a client...
 		if (world.isRemote) {
-			System.out.println("Server only");
+			System.out.println("Server only processing");
 		} else { // If the command is being sent from the server...
 
 			if (args.length < 1 || args.length > 1) {

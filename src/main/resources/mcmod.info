@@ -1,8 +1,8 @@
 [
 {
-  "modid": "gg5cosblocks",
-  "name": "Cosmetic Blocks",
-  "description": "A community-driven mod - taking in your cosmetic block ideas!",  "version": "${version}",
+  "modid": "thewall",
+  "name": "The Wall",
+  "description": "A FREAKIN WALL (worldgenerator)!",  "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",

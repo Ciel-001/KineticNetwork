@@ -7,8 +7,10 @@ import com.sun.javafx.collections.MappingChange.Map;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.Side;
+import net.kineticnetwork.knteleport.network.MyMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -18,6 +20,8 @@ public class MyEventHandler {
 
 	public HashMap<UUID, String> playerMap;
 
+	boolean temp = false;
+	
 	public MyEventHandler() {
 		playerMap = new HashMap<UUID, String>();
 	}
@@ -26,11 +30,20 @@ public class MyEventHandler {
 	@SubscribeEvent
 	public void onUpdate(TickEvent e) {
 		if (e.side == Side.SERVER) {
-			World world = Minecraft.getMinecraft().theWorld;
+			World world = MinecraftServer.getServer().getEntityWorld();
+			
+			if (world != null) {
 
-			for (int i = 0; i < world.playerEntities.size(); i++) {
-				EntityPlayer currentplayer = (EntityPlayer) world.playerEntities.get(i);
-				playerMap.put(currentplayer.getUniqueID(), currentplayer.getDisplayName());
+				for (int i = 0; i < world.playerEntities.size(); i++) {
+					EntityPlayer currentplayer = (EntityPlayer) world.playerEntities.get(i);
+					playerMap.put(currentplayer.getUniqueID(), currentplayer.getDisplayName());
+				}
+			}
+		} else {
+			if (!temp && Minecraft.getMinecraft().theWorld != null) {
+				System.out.println("sending message");
+				BaseClass.NETWORK.sendToServer(new MyMessage(1));
+				temp = true;
 			}
 		}
 	}
