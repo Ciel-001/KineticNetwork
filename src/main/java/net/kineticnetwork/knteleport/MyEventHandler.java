@@ -7,6 +7,7 @@ import com.sun.javafx.collections.MappingChange.Map;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.kineticnetwork.knteleport.network.MyMessage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,8 +21,8 @@ public class MyEventHandler {
 
 	public HashMap<UUID, String> playerMap;
 
-	boolean temp = false;
-	
+	private boolean joined = false;
+
 	public MyEventHandler() {
 		playerMap = new HashMap<UUID, String>();
 	}
@@ -31,7 +32,7 @@ public class MyEventHandler {
 	public void onUpdate(TickEvent e) {
 		if (e.side == Side.SERVER) {
 			World world = MinecraftServer.getServer().getEntityWorld();
-			
+
 			if (world != null) {
 
 				for (int i = 0; i < world.playerEntities.size(); i++) {
@@ -40,10 +41,9 @@ public class MyEventHandler {
 				}
 			}
 		} else {
-			if (!temp && Minecraft.getMinecraft().theWorld != null) {
-				System.out.println("sending message");
-				BaseClass.NETWORK.sendToServer(new MyMessage(1));
-				temp = true;
+			if (!joined && Minecraft.getMinecraft().theWorld != null) {
+				BaseClass.NETWORK.sendToServer(new MyMessage(1, Minecraft.getMinecraft().thePlayer.getDisplayName()));
+				joined = true;
 			}
 		}
 	}
